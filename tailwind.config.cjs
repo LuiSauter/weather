@@ -4,6 +4,7 @@ module.exports = {
     './index.html',
     './src/**/*.{js,jsx}'
   ],
+  darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
       keyframes: {
