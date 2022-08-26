@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*, ::before, ::after {
+  transition: background .2s ease-out;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+html , body {
+  /* min-height: 100vh; */
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
