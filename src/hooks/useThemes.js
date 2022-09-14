@@ -1,11 +1,14 @@
+import { MEDIA } from '../context/helpers'
 import { useTheme } from '../context/ThemeProvider'
 
+const isWindows = typeof window !== 'undefined'
+const isThemeDark = isWindows && window.matchMedia(MEDIA)
+
 const useThemes = () => {
-  const isThemeDark = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
   const { theme, setTheme } = useTheme()
 
   const checkIfIsDark = () => {
-    return isThemeDark && theme === 'system'
+    return isThemeDark.matches && theme === 'system'
       ? true
       : theme === 'dark'
   }
