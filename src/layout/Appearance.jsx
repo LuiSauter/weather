@@ -10,11 +10,9 @@ const Appearance = () => {
     checkIfIsDark() ? setTheme('light') : setTheme('dark')
 
   return (
-    <>
-      <Button onClick={handleTheme} label='Theme'>
-        {checkIfIsDark() ? <FiSun /> : <FiMoon />}
-      </Button>
-    </>
+    <Button onClick={handleTheme} label='Theme'>
+      {checkIfIsDark() ? <FiSun /> : <FiMoon />}
+    </Button>
   )
 }
 
