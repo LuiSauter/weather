@@ -9,13 +9,15 @@ const Header = () => {
 
   const toggleMenu = () => setShowMenu(!showMenu)
 
+  const handleCheck = (event) => toggleMenu(event.target.checked)
+
   return (
     <header className='sticky top-0 left-0 right-0 z-10 backdrop-blur-sm'>
       <div className='flex justify-center py-3 px-4 items-center mx-auto max-w-7xl sm:py-4 sm:px-8 md:py-5 md:px-9'>
         <input
           type='checkbox'
           checked={showMenu}
-          onChange={(e) => toggleMenu(e.target.checked)}
+          onChange={handleCheck}
           className='peer hidden'
           id='menu'
         />
@@ -29,9 +31,7 @@ const Header = () => {
           <Button label='Search'>
             <FiSearch />
           </Button>
-
           <Appearance />
-
           <Button label='Saved'>
             <FiHeart />
           </Button>
