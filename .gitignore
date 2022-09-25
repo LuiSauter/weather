@@ -16,6 +16,8 @@ package-lock.json
 __snapshots__
 coverage
 
+.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
