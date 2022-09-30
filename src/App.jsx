@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Layout from './layout'
 import Home from './pages/Home'
 import Page404 from './pages/Page404'
+import Sw from './sw'
 
 function App () {
   const location = useLocation()
@@ -16,6 +17,7 @@ function App () {
           <Route path='*' element={<Page404 />} />
         </Routes>
       </Layout>
+      <Sw />
       <Toaster position='bottom-center' reverseOrder={false} />
     </>
   )
