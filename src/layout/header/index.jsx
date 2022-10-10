@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { FiSearch, FiHeart, FiMenu } from 'react-icons/fi'
-import { HiOutlineLocationMarker } from 'react-icons/hi'
+import { MdClose } from 'react-icons/md'
+
 import Button from '../../components/button'
+import Geolocation from '../../components/geolocation'
+import Link from '../../components/link'
 import Appearance from '../Appearance'
 
 const Header = () => {
@@ -22,12 +25,10 @@ const Header = () => {
           id='menu'
         />
         <h1 className='font-semibold text-base leading-snug w-full sm:text-lg md:text-xl peer-checked:opacity-0 peer-checked:scale-0 peer-checked:animate-fadeOut transition-opacity duration-200'>
-          Weather
+          <Link href='/'>Weather</Link>
         </h1>
         <nav className='hidden peer-checked:flex animate-fadeOut peer-checked:w-max peer-checked:animate-menuAnimation peer-checked:animate-fadeIn file:flex flex-row text-white md:flex md:animate-none'>
-          <Button label='Geolocation'>
-            <HiOutlineLocationMarker />
-          </Button>
+          <Geolocation />
           <Button label='Search'>
             <FiSearch />
           </Button>
@@ -40,7 +41,7 @@ const Header = () => {
           htmlFor='menu'
           className='p-2 ml-2 bg-transparent rounded-md dark:text-white text-slate-900 hover:bg-slate-200 hover:dark:bg-slate-800 ring-teal-500 active:ring-2 relative cursor-pointer sm:p-2 sm:text-lg md:text-xl md:hidden'
         >
-          <FiMenu />
+          {!showMenu ? <FiMenu /> : <MdClose />}
         </label>
       </div>
     </header>
