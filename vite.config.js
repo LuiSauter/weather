@@ -11,7 +11,12 @@ export default defineConfig({
       manifest,
       includeAssets: [
         '/images/weather.svg'
-      ]
+      ],
+      registerType: 'autoUpdate',
+      devOptions: { enabled: true },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html}', '**/*.{svg,png,jpg,gif}']
+      }
     })
   ]
 })
