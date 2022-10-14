@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
-    environment: 'jsdom',
+    environment: 'happy-dom',
     setupFiles: [resolve(__dirname, '__test__/setup/setup.js')],
     reporters: 'verbose'
   }
