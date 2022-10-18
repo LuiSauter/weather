@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
+import useSWR from 'swr'
+import { weatherUrl } from '../../services/rapidapi'
 import Button from '../button'
 import Loading from '../Loading'
 
@@ -9,12 +11,17 @@ const Geolocation = () => {
   const [loading, setLoading] = useState(false)
   const [disabled, setDisabled] = useState(false)
   const [message, setMessage] = useState('Geolocation')
+  const [coords, setCoords] = useState(null)
   const navigate = useNavigate()
 
+  const { data } = useSWR(coords && `${weatherUrl}${coords}`)
+
+  useEffect(() => {
+    data && navigate(`/search/${encodeURI(data.location.name)}`)
+  }, [data])
+
   function successLocation (position) {
-    navigate(
-      `/search/${position.coords.latitude},${position.coords.longitude}`
-    )
+    setCoords(`${position.coords.latitude},${position.coords.longitude}`)
     setLoading(false)
   }
 
@@ -41,7 +48,12 @@ const Geolocation = () => {
   }
 
   return (
-    <Button onClick={getLocation} disabled={disabled} label='Geolocation'>
+    <Button
+      role='menu-item'
+      onClick={getLocation}
+      disabled={disabled}
+      label={message}
+    >
       {loading ? <Loading size='w-4 h-4' /> : <HiOutlineLocationMarker />}
     </Button>
   )
