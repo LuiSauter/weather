@@ -30,10 +30,10 @@ const Home = () => {
   return (
     <section className='h-max w-full flex flex-col justify-center relative max-w-7xl mx-auto pt-2'>
       <header className='flex flex-col w-full items-center justify-center'>
-        <h2 className='text-4xl font-semibold md:text-5xl xl:text-6xl'>
+        <h2 className='text-xl sm:text-4xl font-semibold md:text-5xl xl:text-6xl'>
           {data.location.name}
         </h2>
-        <span className='text-2xl xl:text-3xl dark:text-slate-300 text-slate-600'>
+        <span className='text-xl sm:text-2xl xl:text-3xl dark:text-slate-300 text-slate-600'>
           {data.location.country}
         </span>
       </header>
