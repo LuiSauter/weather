@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { FiHeart, FiMenu } from 'react-icons/fi'
+import { FiMenu } from 'react-icons/fi'
 import { MdClose } from 'react-icons/md'
 
-import Button from '../../components/button'
 import Geolocation from '../../components/geolocation'
-// import Link from '../../components/link'
+import Link from '../../components/link'
 import Appearance from '../Appearance'
 import SearchDW from '../../components/Drawer/SearchDW'
+import SavedDM from '../../components/Drawer/SavedDM'
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
@@ -24,8 +24,8 @@ const Header = () => {
           className='peer hidden'
           id='menu'
         />
-        <h1 className='font-semibold text-base leading-snug w-full sm:text-lg md:text-xl peer-checked:opacity-0 peer-checked:scale-0 peer-checked:animate-fadeOut transition-opacity duration-200'>
-          <a href='/'>Weather</a>
+        <h1 className='font-semibold text-base leading-snug w-full sm:text-lg md:text-xl peer-checked:opacity-0 peer-checked:scale-0 peer-checked:animate-fadeOut transition-opacity duration-200 peer-checked:md:scale-100 peer-checked:md:opacity-100'>
+          <Link href='/'>Weather</Link>
         </h1>
         <nav
           role='barnavigation'
@@ -34,9 +34,7 @@ const Header = () => {
           <Geolocation />
           <SearchDW />
           <Appearance />
-          <Button role='menu-item' label='Saved'>
-            <FiHeart />
-          </Button>
+          <SavedDM />
         </nav>
         <label
           htmlFor='menu'
