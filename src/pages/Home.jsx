@@ -1,13 +1,15 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 import useSWR from 'swr'
+import Astro from '../components/astro'
+import Hours from '../components/hours'
 import Loading from '../components/Loading'
 import Resume from '../components/resume'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { weatherUrl } from '../services/rapidapi'
 
 const Home = () => {
-  const [defaultLocation, setDefaultLocation] = useLocalStorage(
+  const [defaultLocation] = useLocalStorage(
     'defaultLocation',
     'Bolivia'
   )
@@ -18,7 +20,7 @@ const Home = () => {
   if (!data) {
     return (
       <div className='flex justify-center items-center w-full py-4 gap-3'>
-        <Loading /> Loading weather data...
+        <Loading size='h-5 w-5' /> Loading weather data...
       </div>
     )
   }
@@ -39,12 +41,19 @@ const Home = () => {
         currentCondition={current.condition.text}
         humidity={current.humidity}
         iconCondition={current.condition.icon}
-        maxTempC={forecast.forecastday[0].day.maxtemp_c}
-        minTempC={forecast.forecastday[0].day.mintemp_c}
         tempC={current.temp_c}
         windKph={current.wind_kph}
+        maxTempC={forecast.forecastday[0].day.maxtemp_c}
+        minTempC={forecast.forecastday[0].day.mintemp_c}
         localtime={location.localtime_epoch}
         cityName={location.name}
+      />
+      <Hours hoursForecast={forecast.forecastday[0].hour} />
+      <Astro
+        moonrise={forecast.forecastday[0].astro.moonrise}
+        moonset={forecast.forecastday[0].astro.moonset}
+        sunrise={forecast.forecastday[0].astro.sunrise}
+        sunset={forecast.forecastday[0].astro.sunset}
       />
     </section>
   )
