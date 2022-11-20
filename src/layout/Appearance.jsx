@@ -10,7 +10,7 @@ const Appearance = () => {
     checkIfIsDark() ? setTheme('light') : setTheme('dark')
 
   return (
-    <Button onClick={handleTheme} label='Theme'>
+    <Button role='menu-item' onClick={handleTheme} label='Theme'>
       {checkIfIsDark() ? <FiSun /> : <FiMoon />}
     </Button>
   )

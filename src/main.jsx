@@ -7,6 +7,7 @@ import App from './App'
 import { SWRConfig } from 'swr'
 import { fetcher } from './services/fetcher'
 import './styles/index.css'
+import Sw from './sw'
 
 const root = createRoot(document.getElementById('root'))
 
@@ -16,6 +17,7 @@ root.render(
       <BrowserRouter>
         <SWRConfig value={{ fetcher }}>
           <App />
+          <Sw />
         </SWRConfig>
       </BrowserRouter>
     </ThemeProvider>

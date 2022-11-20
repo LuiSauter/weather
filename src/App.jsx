@@ -4,21 +4,20 @@ import Layout from './layout'
 import Home from './pages/Home'
 import Page404 from './pages/Page404'
 import Search from './pages/Search'
-import Sw from './sw'
 
 function App () {
   const location = useLocation()
+
   return (
     <>
       <Layout>
         <Routes key={location.pathname}>
-          <Route path='/' element={<Home />} />
-          <Route path='/search/:name' element={<Search />} />
-          <Route path='/404' element={<Page404 />} />
-          <Route path='*' element={<Page404 />} />
+          <Route element={<Home />} path='/' />
+          <Route element={<Search />} path='/search/:name' />
+          <Route element={<Page404 />} path='/404' />
+          <Route element={<Page404 />} path='*' />
         </Routes>
       </Layout>
-      <Sw />
       <Toaster position='bottom-center' reverseOrder={false} />
     </>
   )
