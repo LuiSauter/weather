@@ -1,10 +1,16 @@
 /* eslint-disable import/export */
 import { cleanup, render } from '@testing-library/react'
-import { afterEach } from 'vitest'
+import { afterEach, vi } from 'vitest'
 import '@testing-library/jest-dom'
 
 afterEach(() => {
   cleanup()
+  const modals = document.querySelectorAll('portal-root')
+  modals.forEach((modal) => modal.parentNode.removeChild(modal))
+  vi.mock('react-dom', () => ({
+    ...vi.importActual('react-dom'),
+    createPortal: (Component) => Component
+  }))
 })
 
 const customRender = (ui, options = {}) =>
