@@ -12,7 +12,9 @@ const Geolocation = () => {
   const navigate = useNavigate()
 
   function successLocation (position) {
-    navigate(`/search/${position.coords.latitude},${position.coords.longitude}`)
+    const latitude = Math.round((position.coords.latitude + Number.EPSILON) * 100) / 100
+    const longitude = Math.round((position.coords.longitude + Number.EPSILON) * 100) / 100
+    navigate(`/search/${latitude},${longitude}`)
     setLoading(false)
   }
 
