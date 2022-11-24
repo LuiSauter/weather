@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { FiSearch, FiHeart, FiMenu } from 'react-icons/fi'
+import { FiHeart, FiMenu } from 'react-icons/fi'
 import { MdClose } from 'react-icons/md'
 
 import Button from '../../components/button'
 import Geolocation from '../../components/geolocation'
 // import Link from '../../components/link'
 import Appearance from '../Appearance'
+import SearchDW from '../../components/Drawer/SearchDW'
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
 
   const toggleMenu = () => setShowMenu(!showMenu)
-
   const handleCheck = (event) => toggleMenu(event.target.checked)
 
   return (
@@ -27,11 +27,12 @@ const Header = () => {
         <h1 className='font-semibold text-base leading-snug w-full sm:text-lg md:text-xl peer-checked:opacity-0 peer-checked:scale-0 peer-checked:animate-fadeOut transition-opacity duration-200'>
           <a href='/'>Weather</a>
         </h1>
-        <nav role='barnavigation' className='hidden peer-checked:flex animate-fadeOut peer-checked:w-max peer-checked:animate-menuAnimation peer-checked:animate-fadeIn file:flex flex-row text-white md:flex md:animate-none'>
+        <nav
+          role='barnavigation'
+          className='hidden peer-checked:flex animate-fadeOut peer-checked:w-max peer-checked:animate-menuAnimation peer-checked:animate-fadeIn file:flex flex-row text-white md:flex md:animate-none'
+        >
           <Geolocation />
-          <Button role='menu-item' label='Search'>
-            <FiSearch />
-          </Button>
+          <SearchDW />
           <Appearance />
           <Button role='menu-item' label='Saved'>
             <FiHeart />
