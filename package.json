@@ -12,7 +12,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "canvas-confetti": "^1.6.0",
+    "canvas-confetti": "1.6.0",
     "nanoid": "4.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -23,23 +23,23 @@
     "vite-plugin-pwa": "0.13.1"
   },
   "devDependencies": {
-    "@s-ui/mono": "^2.31.0",
+    "@s-ui/mono": "2.31.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.3.0",
-    "@testing-library/user-event": "^14.4.3",
+    "@testing-library/user-event": "14.4.3",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "@vitejs/plugin-react": "2.0.1",
-    "@vitest/coverage-c8": "^0.24.3",
+    "@vitest/coverage-c8": "0.24.3",
     "autoprefixer": "10.4.8",
     "happy-dom": "7.7.0",
     "postcss": "8.4.16",
     "standard": "17.0.0",
     "tailwindcss": "3.1.8",
     "vite": "3.0.7",
-    "vite-plugin-rewrite-all": "^1.0.0",
+    "vite-plugin-rewrite-all": "1.0.0",
     "vitest": "0.22.1",
-    "workbox-window": "^6.5.4"
+    "workbox-window": "6.5.4"
   },
   "eslintConfig": {
     "extends": [
