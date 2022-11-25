@@ -17,7 +17,7 @@ import { weatherUrl } from '../services/rapidapi'
 const Search = () => {
   const params = useParams()
   const [isDefault, setIsDefault] = useState(false)
-  const [isSaved, setisSaved] = useState(false)
+  const [isSaved, setIsSaved] = useState(false)
   const [saved, setSaved] = useState(
     window.localStorage.savedLocations ? JSON.parse(window.localStorage.savedLocations) : []
   )
@@ -26,11 +26,13 @@ const Search = () => {
   useEffect(() => {
     window.localStorage.setItem('savedLocations', JSON.stringify(saved))
     if (saved.find(item => item.title === params.name)) {
-      setisSaved(true)
+      setIsSaved(true)
+    } else {
+      setIsSaved(false)
     }
     return () => {
     }
-  }, [saved])
+  }, [saved, params.name])
 
   if (error) return <Navigate to='/404' />
   if (!data) {
@@ -57,16 +59,16 @@ const Search = () => {
   const handleSaveLocation = () => {
     const newLocation = {
       id: nanoid(),
-      url: params.name,
-      title: data.location.name,
+      title: params.name,
+      url: `${data.location.lat},${data.location.lon}`,
       country: data.location.country
     }
     if (isSaved) {
       setSaved(saved.filter(item => item.title !== params.name))
-      setisSaved(false)
+      setIsSaved(false)
     } else {
       setSaved([...saved, newLocation])
-      setisSaved(true)
+      setIsSaved(true)
       confetti({
         particleCount: 100,
         startVelocity: 30,
