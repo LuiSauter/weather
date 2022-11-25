@@ -5,7 +5,6 @@ import { SWRConfig } from 'swr'
 
 import { ThemeProvider } from './context/ThemeProvider'
 import { fetcher } from './services/fetcher'
-import Sw from './sw'
 import { Home, Layout, Page404, Search } from './App'
 import './styles/index.css'
 
@@ -34,7 +33,6 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
-      <Sw />
       <RouterProvider router={router} />
     </ThemeProvider>
   </React.StrictMode>
